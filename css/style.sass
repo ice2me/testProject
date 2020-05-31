@@ -1,0 +1,430 @@
+*
+	padding: 0
+	margin: 0
+	border: 0
+	transition: .7s ease-in-out
+	box-sizing: border-box
+*:before *:after
+	-moz-box-sizing: border-box
+	-webkit-box-sizing: border-box
+	box-sizing: border-box
+a:focus,a:active
+	outline: none
+nav,footer,header,aside
+	display: block
+html,body
+		height: 100%
+		width: 100%
+		font-size: 100%
+		line-height: 1
+		font-size: 10px
+		font-family: 'Exo 2', sans-serif
+		-ms-text-size-adjust: 100%
+		-moz-text-size-adjust: 100%
+		-webkit-text-size-adjust: 100%
+		margin: 0 auto
+		outline: none
+main
+	width: 100%
+input::-ms-clear
+	display: none
+input
+	&::-webkit-input-placeholder
+		color: grey
+		padding: 10px
+		text-overflow: ellipsis
+	&::-moz-placeholder
+		color: grey
+		padding: 10px
+		text-overflow: ellipsis
+	&:-ms-input-placeholder
+		color: grey
+		padding: 10px
+		text-overflow: ellipsis
+	&::-webkit-inner-spin-button
+		-webkit-appearance: none
+	&::-webkit-outer-spin-button
+		-webkit-appearance: none
+	&[type='number']
+		-moz-appearance: textfield
+button:active, button:focus
+	outline: none !important
+button::-moz-focus-inner
+	border: 0 !important
+button
+	cursor: pointer
+button::-moz-focus-inner
+	padding: 0
+	border: 0
+a,a:visited
+	text-decoration: none
+a:hover
+	text-decoration: none
+	outline: none !important
+video:active, video:focus
+	outline: none !important
+ul li
+	list-style: none
+h1,h2,h3,h4,h5,h6
+	font-size: inherit
+
+//colors
+$violet: #52458A
+$blue: #422892
+$blueDark: #06054A
+$textGrey: #858585
+$textViolet: #2F2949
+//fonts
+$ibm: IBM Plex Sans
+$tenors: Tenor Sans
+//styles
+@mixin dflex
+	display: flex
+	align-items: center
+	justify-content: center
+
+
+//********************Start*project****************************
+
+.wrapper
+	width: 100%
+	height: 100%
+	margin: 0 auto
+	display: flex
+
+//********************burger****************************
+.top
+	width: 100%
+	height: 53px
+	position: fixed
+	display: flex
+	background: radial-gradient(93.2% 1204.95% at 79.33% 383.02%, #482C98 0%, rgba(45, 30, 136, 0) 100%), #06054A
+	@media screen and (min-width: 980px)
+		display: none
+.burger
+	display: none
+	justify-content: flex-start
+	flex-direction: column
+	width: 100%
+	height: 100%
+	background: radial-gradient(93.2% 1204.95% at 79.33% 383.02%, #482C98 0%, rgba(45, 30, 136, 0) 100%), #06054A
+	position: fixed
+	right: -1000px
+	top: 50px
+	z-index: 120
+	transition: all ease 2s
+	@media screen and (max-width: 980px)
+		display: flex
+	&__logo
+		width: 100px
+		height: 34px
+		margin: 7px 0 0 15px
+		position: relative
+		&-beta
+			width: 34px
+			height: 17px
+			background-color: #656AD9
+			color: #fff
+			@include dflex
+			position: absolute
+			top: 0px
+			left: 110px
+			font-family: $tenors
+			font-style: normal
+			font-weight: normal
+			font-size: 13px
+			line-height: 20px
+	&__button
+		width: 60px
+		height: 60px
+		position: fixed
+		right: 0
+		top: 0
+		display: flex
+		justify-content: center
+		align-items: center
+		cursor: pointer
+		transition: all ease 2s
+		background-color: grey
+		background-color: transparent
+		transform: rotate(180deg)
+	&__menu
+		margin-top: 100px
+		z-index: 10
+		li
+			width: 100%
+			height: 52px
+			display: flex
+			align-items: center
+			justify-content: space-between
+			position: relative
+			padding: 0 30px
+			&::before
+				position: absolute
+				bottom: 0
+				right: 0
+				width: 97%
+				height: 1px
+				background-color: #4C3C92
+				content: ""
+				@media screen and (max-width: 768px)
+					width: 96%
+				@media screen and (max-width: 568px)
+					width: 93%
+				@media screen and (max-width: 368px)
+					width: 90%
+			&:hover
+				background-color: #433E8D
+			&:last-child
+				&::before
+					width: 0
+		&-link
+			font-family: $tenors
+			font-style: normal
+			font-weight: normal
+			font-size: 20px
+			line-height: 25px
+			color: #fff
+			&:hover
+				border-bottom: 1px solid #fff
+	&__year
+		position: absolute
+		bottom: 8%
+		left: 38%
+		font-family: $ibm
+		font-style: normal
+		font-weight: normal
+		font-size: 14px
+		line-height: 18px
+		text-align: center
+		font-feature-settings: 'tnum' on, 'lnum' on
+		color: #ACADC1
+	
+.burger__button-bar1,
+.burger__button-bar3
+	width: 30px
+	height: 2px
+	background-color: #fff
+	margin: 6px 0
+	-webkit-transition: 0.4s
+	transition: 0.4s
+.burger__button-bar2
+	width: 15px
+	height: 2px
+	background-color: #fff
+	margin: 6px 0
+	-webkit-transition: 0.4s
+	transition: 0.4s
+.change .burger__button-bar1
+	-webkit-transform: rotate(-45deg) translate(-2px, 4px)
+	transform: rotate(-45deg) translate(-2px, 4px)
+	background-color: #fff
+.change .burger__button-bar2
+	opacity: 0
+.change .burger__button-bar3
+	-webkit-transform: rotate(45deg) translate(-8px, -8px)
+	transform: rotate(45deg) translate(-8px, -8px)
+	background-color: #fff
+
+//********************header****************************
+.astromix
+	width: 300px
+	height: 100%
+	background: radial-gradient(160.65% 47.4% at 93% 52.6%, #482C98 0%, rgba(45, 30, 136, 0) 100%), #06054A
+	display: flex
+	justify-content: space-between
+	flex-direction: column
+	@media screen and (max-width: 980px)
+		display: none
+	&__logo
+		margin: 26px 0 0 30px
+		position: relative
+		&-beta
+			width: 47px
+			height: 20px
+			background-color: #656AD9
+			color: #fff
+			@include dflex
+			position: absolute
+			top: 0px
+			right: 30px
+			font-family: $tenors
+			font-style: normal
+			font-weight: normal
+			font-size: 16px
+			line-height: 20px
+	&__menu
+		margin-top: 150px
+		z-index: 10
+		ul
+			li
+				width: 100%
+				height: 52px
+				display: flex
+				align-items: center
+				justify-content: space-between
+				position: relative
+				padding: 0 30px
+				&::before
+					position: absolute
+					bottom: 0
+					right: 0
+					width: 90%
+					height: 1px
+					background-color: #4C3C92
+					content: ""
+				&:hover
+					background-color: #433E8D
+				&:last-child
+					&::before
+						width: 0
+				a
+					font-family: $tenors
+					font-style: normal
+					font-weight: normal
+					font-size: 20px
+					line-height: 25px
+					color: #fff
+					&:hover
+						border-bottom: 1px solid #fff
+	&__around
+		margin-top: -50px
+	&__year
+		width: 100%
+		height: 40px
+		background-color: $blueDark
+		display: flex
+		justify-content: center
+		font-family: $ibm
+		font-style: normal
+		font-weight: normal
+		font-size: 14px
+		line-height: 18px
+		font-feature-settings: 'tnum' on, 'lnum' on
+		color: #ACADC1
+
+//********************products*firstname***************************
+.products
+	width: 100%
+	height: 55px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	margin-top: 36px
+	@media screen and (max-width: 980px)
+		margin-top: 65px
+	&__name
+		h1
+			font-family: $tenors
+			font-style: normal
+			font-weight: normal
+			font-size: 50px
+			margin-left: 45px
+			color: #2F2949
+			@media screen and (max-width: 768px)
+				font-size: 30px
+				margin: 16px
+	&__button
+		display: flex
+		margin-right: 45px
+		&-tile, &-content, &-list, &-table
+			width: 40px
+			height: 30px
+			@include dflex
+			flex-direction: row
+			stroke: #999
+			border: 0.5px solid #999
+			&:hover, &:focus
+				border: 1px solid $violet
+				svg
+					stroke: $violet
+			&:active
+				background-color: $violet
+				svg
+					stroke: #fff
+		&-table
+			background-color: $violet
+			svg
+				stroke: #fff
+
+//********************carts****************************
+.carts
+	max-width: 1140px
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	justify-content: center
+	margin: 30px auto
+	padding: 10px
+	@media screen and (max-width: 768px)
+		padding: 1px
+.cart__box
+	width: 265px
+	height: 333px
+	display: flex
+	flex-direction: column
+	border: 1px solid #999
+	position: relative
+	z-index: -1
+	&:hover, &:focus
+		border: 2px solid $violet
+		box-shadow: 0px 5px 20px rgba(82, 69, 138, 0.3)
+		.arrow
+			opacity: 1
+	@media screen and (max-width: 768px)
+		width: 172px
+		height: 233px
+	img
+		margin: 96px auto 0
+		@media screen and (max-width: 768px)
+			margin: 55px auto 0
+	a
+		width: 60%
+		margin: 82px 0 0 31px
+		color: #2F2949
+		font-family: $tenors
+		font-style: normal
+		font-weight: normal
+		font-size: 20px
+		line-height: 25px
+		@media screen and (max-width: 768px)
+			width: 70%
+			font-size: 16px
+			line-height: 15px
+			margin: 50px 0 0 20px
+	span
+		width: 70%
+		color: #777777
+		font-family: $ibm
+		font-style: normal
+		font-weight: normal
+		font-size: 16px
+		line-height: 25px
+		margin-left: 31px
+		@media screen and (max-width: 768px)
+			font-size: 13px
+			line-height: 15px
+			margin-left: 20px
+.arrow
+	position: absolute
+	top: 149px
+	left: 70%
+	opacity: 0
+
+//********************bottom*text***************************
+
+.bottom__text
+	width: 691px
+	margin: 40px 0 20px 45px
+	@media screen and (max-width: 980px)
+		width: 100%
+		margin: 40px 0
+		padding: 0 15px
+	span
+		width: 100%
+		color: #2F2949
+		font-family: $ibm
+		font-style: normal
+		font-weight: normal
+		font-size: 16px
+		line-height: 25px
